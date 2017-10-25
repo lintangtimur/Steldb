@@ -3,17 +3,14 @@ Steldb adalah library php yang bertujuan mempermudah pelaksanaan eksekusi query 
 Namun Steldb digunakan hanya untuk project kecil saja, dan mempermudah tugas kuliah.
 
 ## Table Of Content
-[Requirement](#requirement)
 
-[Installation](#installation)
-
-[Getting Started](#getting-started)
-
-[Example](#example)
-
-[Bug/Error/Suggestion](#bugerrorsuggestion)
-
-[Contributing](#contributing)
+[Requirement](#requirement)  
+[Installation](#installation)  
+[Getting Started](#getting-started)  
+[Example](#example)  
+[Bug/Error/Suggestion](#bugerrorsuggestion)  
+[Wiki](https://github.com/lintangtimur/Steldb/wiki)  
+[Contributing](#contributing)  
 ## Requirement
 1. Sudah terinstall Composer
 2. Saya menggunakan PHP versi 7, jadi untuk PHP untuk versi sebelumnya, belum dicoba.
