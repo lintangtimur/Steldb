@@ -1,0 +1,27 @@
+{
+    "name": "lintangtimur/steldb",
+    "description": "Database driver for your simple project",
+    "type": "library",
+    "homepage": "https://github.com/lintangtimur/Steldb",
+    "require": {
+        "vlucas/phpdotenv": "^2.4",
+        "monolog/monolog": "^1.23",
+        "symfony/var-dumper": "^3.3",
+        "apigen/apigen": "^4.1"
+    },
+    "autoload": {
+      "files":[
+        "src/helper/function.php"
+      ],
+      "psr-4" :{
+        "Steldb\\": "src"
+      }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lintang Timur",
+            "email": "lintangtimur@protonmail.com"
+        }
+    ]
+}
