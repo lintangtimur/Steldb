@@ -7,7 +7,7 @@ Namun Steldb digunakan hanya untuk project kecil saja, dan mempermudah tugas kul
 
 [Installation](#installation)
 
-[Getting Started](#getting-tarted)
+[Getting Started](#getting-started)
 
 [Example](#example)
 
