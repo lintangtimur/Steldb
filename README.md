@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://poser.pugx.org/lintangtimur/steldb/v/stable)](https://packagist.org/packages/lintangtimur/steldb)
+[![GitHub issues](https://img.shields.io/github/issues/lintangtimur/Steldb.svg?style=flat-square)](https://github.com/lintangtimur/Steldb/issues)
+[![GitHub license](https://img.shields.io/github/license/lintangtimur/Steldb.svg?style=flat-square)](https://github.com/lintangtimur/Steldb/blob/master/LICENSE)
+
 # About Steldb
 Steldb adalah library php yang bertujuan mempermudah pelaksanaan eksekusi query database, mungkin anda sudah pakai PHP ORM semacam Doctrine, Propel, atau RedbeanPHP.
 Namun Steldb digunakan hanya untuk project kecil saja, dan mempermudah tugas kuliah.
