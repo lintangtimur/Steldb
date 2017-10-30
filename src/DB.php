@@ -38,8 +38,6 @@ class DB extends Connection
         $rowcount = $this->setRow($hasil);
         $hasil = $hasil->fetchAll(\PDO::FETCH_CLASS);
 
-        $hasil['rowCount'] = $rowcount;
-
         $this->temp = $hasil;
 
         return $this;
@@ -70,7 +68,7 @@ class DB extends Connection
      * @param string $query    example
      * select * from siswa where NIM = ?
      * @param array  $bindValue value
-     * @return array|null
+     * @return array|null|$this
      */
     public function RAW($query, array $bindValue)
     {
@@ -78,7 +76,6 @@ class DB extends Connection
         $result->execute($bindValue);
 
         $hasil = $this->checkArrayIndex($result->fetchAll(\PDO::FETCH_CLASS));
-        $hasil['rowCount'] = $this->setRow($result);
         $this->temp = $hasil;
 
         return $this;
@@ -115,12 +112,12 @@ class DB extends Connection
      */
     public function latest()
     {
-        return $this->temp[count($this->temp) - 2];
+        return $this->temp[count($this->temp) - 1];
     }
 
     /**
      * get all result
-     * @return [type] [description]
+     * @return mixed get result
      */
     public function get()
     {
