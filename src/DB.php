@@ -29,7 +29,7 @@ class DB extends Connection
     /**
      * Select all from table name
      * @param  string $table nama table
-     * @return array        return an array
+     * @return $this        return an array
      */
     public function selectAll($table)
     {
@@ -37,6 +37,7 @@ class DB extends Connection
         $hasil->execute();
         $rowcount = $this->setRow($hasil);
         $hasil = $hasil->fetchAll(\PDO::FETCH_CLASS);
+
         $hasil['rowCount'] = $rowcount;
 
         $this->temp = $hasil;
