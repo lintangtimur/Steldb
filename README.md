@@ -1,3 +1,4 @@
+[![Latest Stable Version](https://poser.pugx.org/lintangtimur/steldb/v/stable)](https://packagist.org/packages/lintangtimur/steldb)
 [![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/lintangtimur/Steldb/979.svg?style=flat-square)]()
 [![GitHub last commit](https://img.shields.io/github/last-commit/lintangtimur/Steldb.svg?style=flat-square)]()
 [![Website](https://img.shields.io/website-up-down-green-red/http/stelindb.net.svg?label=stelindb&style=flat-square)](https://stelindb.net)
