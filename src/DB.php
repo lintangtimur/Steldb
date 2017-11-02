@@ -19,11 +19,12 @@ class DB extends Connection
   private $temp;
 
   /**
-   * Construct to parrent class
+   * DB Init
+   * @param bool $logger default is true, leave blank if not use logger
    */
-    public function __construct()
+    public function __construct($logger = true)
     {
-        Connection::__construct();
+        Connection::__construct($logger);
     }
 
     /**
@@ -35,10 +36,15 @@ class DB extends Connection
     {
         $hasil = $this->pdo->prepare("Select * from $table");
         $hasil->execute();
+        if (!$this->isAnyLogger()) {
+            $this->log->info('selectAll() errorCode: '.$hasil->errorCode());
+        }
+
         $rowcount = $this->setRow($hasil);
         $hasil = $hasil->fetchAll(\PDO::FETCH_CLASS);
 
         $this->temp = $hasil;
+
 
         return $this;
     }
@@ -58,8 +64,14 @@ class DB extends Connection
 
         $stmt = $this->pdo->prepare($sql);
         if ($stmt->execute($parameter)) {
+            if (!$this->isAnyLogger()) {
+                $this->log->info("insert() errorCode: {$stmt->errorCode()}");
+                $this->log->info("insert() param: ", $parameter);
+            }
+
             return true;
         }
+        $this->log->error("insert() error: {$stmt->errorInfo()}");
 
         return false;
     }
@@ -77,6 +89,9 @@ class DB extends Connection
 
         $hasil = $this->checkArrayIndex($result->fetchAll(\PDO::FETCH_CLASS));
         $this->temp = $hasil;
+        if (!$this->isAnyLogger()) {
+            $this->log->info('RAW-query: '.$query, $bindValue);
+        }
 
         return $this;
     }
@@ -141,5 +156,18 @@ class DB extends Connection
     public function setRow(\PDOStatement $row)
     {
         return $row->rowCount();
+    }
+
+    /**
+     * Check if any logger in this instance
+     * @return bool return true if have logger
+     */
+    private function isAnyLogger()
+    {
+        if (empty($this->log)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
