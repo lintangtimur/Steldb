@@ -6,8 +6,10 @@
     "require": {
         "vlucas/phpdotenv": "^2.4",
         "monolog/monolog": "^1.23",
-        "symfony/var-dumper": "^3.3",
-        "apigen/apigen": "^4.1"
+        "symfony/var-dumper": "^3.3"
+    },
+    "require-dev": {
+      "apigen/apigen": "^4.1"
     },
     "autoload": {
       "files":[
