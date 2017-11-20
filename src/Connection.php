@@ -36,6 +36,8 @@ class Connection implements ConnectionInterface
                 $this->log->pushHandler(new StreamHandler('logs/steldb.log', Logger::DEBUG));
             }
             $this->pdo = new PDO("{$_ENV['DB_DRIVER']}:dbname={$_ENV['DB_NAME']};host={$_ENV['DB_HOST']}", $_ENV['DB_USER'], $_ENV['DB_PASS']);
+            // $dotenv = new \Dotenv\Dotenv(__DIR__);
+            // $dotenv->load();
         } catch (PDOException $e) {
             die($e->getMessage());
         }
