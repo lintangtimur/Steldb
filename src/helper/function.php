@@ -1,4 +1,5 @@
 <?php
+
 use Symfony\Component\VarDumper\VarDumper;
 
 /**
@@ -8,5 +9,5 @@ use Symfony\Component\VarDumper\VarDumper;
  */
 function dd($var)
 {
-    VarDumper::dump($var);
+    die(VarDumper::dump($var));
 }
