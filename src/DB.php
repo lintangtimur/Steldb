@@ -1,7 +1,6 @@
 <?php
-namespace Steldb;
 
-use Steldb\Connection;
+namespace Steldb;
 
 /**
  * Database Initialize
@@ -13,15 +12,15 @@ use Steldb\Connection;
 class DB extends Connection
 {
     /**
-   * [private description]
-   * @var array
-   */
-  private $temp;
+     * [private description]
+     * @var array
+     */
+    private $temp;
 
-  /**
-   * DB Init
-   * @param bool $logger default is true, leave blank if not use logger
-   */
+    /**
+     * DB Init
+     * @param bool $logger default is true, leave blank if not use logger
+     */
     public function __construct($logger = true)
     {
         Connection::__construct($logger);
@@ -30,14 +29,14 @@ class DB extends Connection
     /**
      * Select all from table name
      * @param  string $table nama table
-     * @return $this        return an array
+     * @return $this  return an array
      */
     public function selectAll($table)
     {
         $hasil = $this->pdo->prepare("Select * from $table");
         $hasil->execute();
         if (!$this->isAnyLogger()) {
-            $this->log->info('selectAll() errorCode: '.$hasil->errorCode());
+            $this->log->info('selectAll() errorCode: ' . $hasil->errorCode());
         }
 
         $rowcount = $this->setRow($hasil);
@@ -45,28 +44,31 @@ class DB extends Connection
 
         $this->temp = $hasil;
 
-
         return $this;
     }
 
     /**
      * Insert ke dalam table
-     * @param  string $table     [description]
-     * @param  array $parameter [description]
-     * @return bool return true if success
+     * @param  string $table     nama table yang akan diinsert, contoh table SISWA
+     * @param  array  $parameter parameter table dengan [
+     *                           key => value
+     *                           ]
+     * @return bool   return true if success
      */
     public function insert($table, array $parameter)
     {
-        $sql = sprintf("insert into %s (%s) values (%s)",
+        $sql = sprintf(
+            'insert into %s (%s) values (%s)',
         $table,
       implode(', ', array_keys($parameter)),
-      ':'.implode(', :', array_keys($parameter)));
+      ':' . implode(', :', array_keys($parameter))
+        );
 
         $stmt = $this->pdo->prepare($sql);
         if ($stmt->execute($parameter)) {
             if (!$this->isAnyLogger()) {
                 $this->log->info("insert() errorCode: {$stmt->errorCode()}");
-                $this->log->info("insert() param: ", $parameter);
+                $this->log->info('insert() param: ', $parameter);
             }
 
             return true;
@@ -75,11 +77,12 @@ class DB extends Connection
 
         return false;
     }
+
     /**
      * Query mentah
-     * @param string $query    example
-     * select * from siswa where NIM = ?
-     * @param array  $bindValue value
+     * @param  string           $query     example
+     *                                     select * from siswa where NIM = ?
+     * @param  array            $bindValue value
      * @return array|null|$this
      */
     public function RAW($query, array $bindValue)
@@ -90,7 +93,7 @@ class DB extends Connection
         $hasil = $this->checkArrayIndex($result->fetchAll(\PDO::FETCH_CLASS));
         $this->temp = $hasil;
         if (!$this->isAnyLogger()) {
-            $this->log->info('RAW-query: '.$query, $bindValue);
+            $this->log->info('RAW-query: ' . $query, $bindValue);
         }
 
         return $this;
@@ -150,7 +153,7 @@ class DB extends Connection
 
     /**
      * Set row for internal purpose
-     * @param \PDOStatement $row result from statement execute
+     * @param  \PDOStatement $row result from statement execute
      * @return int
      */
     public function setRow(\PDOStatement $row)
@@ -169,5 +172,13 @@ class DB extends Connection
         } else {
             return false;
         }
+    }
+
+    /**
+     * Get Steldb Version
+     */
+    public static function Version()
+    {
+        return \Steldb\Constant\Meta::VERSION;
     }
 }
