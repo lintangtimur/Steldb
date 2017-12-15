@@ -1,4 +1,5 @@
 <?php
+
 namespace Steldb;
 
 /**
@@ -7,8 +8,8 @@ namespace Steldb;
 interface ConnectionInterface
 {
     /**
-   * get PDO Connection
-   * @return \PDO PDO Object
-   */
-  public function getConnection();
+     * get PDO Connection
+     * @return \PDO PDO Object
+     */
+    public function getConnection();
 }

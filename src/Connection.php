@@ -1,9 +1,9 @@
 <?php
+
 namespace Steldb;
 
 use PDO;
 use PDOException;
-use Steldb\ConnectionInterface;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -32,19 +32,17 @@ class Connection implements ConnectionInterface
     {
         try {
             if ($config) {
-                $this->log = new Logger("Steldb_DB");
+                $this->log = new Logger('Steldb_DB');
                 $this->log->pushHandler(new StreamHandler('logs/steldb.log', Logger::DEBUG));
             }
             $this->pdo = new PDO("{$_ENV['DB_DRIVER']}:dbname={$_ENV['DB_NAME']};host={$_ENV['DB_HOST']}", $_ENV['DB_USER'], $_ENV['DB_PASS']);
-            // $dotenv = new \Dotenv\Dotenv(__DIR__);
-            // $dotenv->load();
         } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getConnection()
     {

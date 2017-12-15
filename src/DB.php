@@ -40,7 +40,7 @@ class DB extends Connection
         }
 
         $rowcount = $this->setRow($hasil);
-        $hasil = $hasil->fetchAll(\PDO::FETCH_CLASS);
+        $hasil    = $hasil->fetchAll(\PDO::FETCH_CLASS);
 
         $this->temp = $hasil;
 
@@ -90,7 +90,7 @@ class DB extends Connection
         $result = $this->pdo->prepare($query);
         $result->execute($bindValue);
 
-        $hasil = $this->checkArrayIndex($result->fetchAll(\PDO::FETCH_CLASS));
+        $hasil      = $this->checkArrayIndex($result->fetchAll(\PDO::FETCH_CLASS));
         $this->temp = $hasil;
         if (!$this->isAnyLogger()) {
             $this->log->info('RAW-query: ' . $query, $bindValue);
