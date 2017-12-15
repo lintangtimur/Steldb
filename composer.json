@@ -10,7 +10,8 @@
     },
     "require-dev": {
       "apigen/apigen": "^4.1",
-        "phploc/phploc": "^4.0"
+        "phploc/phploc": "^4.0",
+        "phpunit/phpunit": "^6.5"
     },
     "autoload": {
       "files":[
