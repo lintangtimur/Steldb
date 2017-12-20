@@ -9,10 +9,6 @@ class DBTest extends \PHPUnit\Framework\TestCase
      */
     public function testDB()
     {
-        $dotenv = new \Dotenv\Dotenv(__DIR__);
-        $dotenv->load();
-        $db    = new \Steldb\DB($logger = false);
-        $hasil = $db->selectAll('siswa')->get();
-        $this->assertEquals($hasil, $hasil);
+        $this->assertEquals(\Steldb\DB::Version(), '1.1.2');
     }
 }
